@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>Twitter Bot</title>
+</head>
+<body>
+<h1>Twitter Bot</h1>
+<p>This is the code for my Twitter bot.</p>
+<script>
+function onOAuthCallback(request) {
+  // Get the access token and secret from the request
+  var token = request.args.get('oauth_token');
+  var secret = request.args.get('oauth_token_secret');
+
+  // Save the access token and secret to environment variables
+  process.env.TWITTER_ACCESS_TOKEN = token;
+  process.env.TWITTER_ACCESS_TOKEN_SECRET = secret;
+
+  // Redirect the user back to Twitter
+  window.location.href = 'https://twitter.com';
+}
+</script>
+<script src="https://api.twitter.com/oauth/2/authorize?oauth_callback=https://your-server-url/twitter_bot.py"></script>
+</body>
+</html>
